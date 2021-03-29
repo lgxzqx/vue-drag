@@ -15,10 +15,8 @@ export function deepCopy(target) {
                 result[key] = target[key]
             }
         }
-
         return result
     }
-    
     return target
 }
 
@@ -34,23 +32,26 @@ export function transformProp(target) {
 }
 
 export function transformStyle(target) {
-    if (Array.isArray(target)) {
+    if (Object.prototype.toString.call(target) === '[object Object]') {
         let values = ''
-        target.forEach(item => {
-            if (item.key == 'tbPadding') {
-                values +=  `paddingTop:${item.value}px;paddingBottom:${item.value}px;`
-            } else if (item.key == 'lrPadding') {
-                values +=  `paddingLeft:${item.value}px;paddingRight:${item.value}px;`
-            } else if (item.key == 'tbMargin') {
-                values +=  `marginTop:${item.value}px;`
-            } else if (item.key == 'lrMargin') {
-                values +=  `marginLeft:${item.value}px;marginRight:${item.value}px;`
-            } else if (item.key == 'bgclor') {
-                values +=  `backgroundColor: ${item.value};`
-            } else {
-                values +=  `backgroundImage: ${item.value};`
+        for (const key in target) {
+            if (Object.prototype.hasOwnProperty.call(target, key)) {
+                const item = target[key].value;
+                if (key == 'tbPadding') {
+                    values +=  `paddingTop:${item}px;paddingBottom:${item}px;`
+                } else if (key == 'lrPadding') {
+                    values +=  `paddingLeft:${item}px;paddingRight:${item}px;`
+                } else if (key == 'tbMargin') {
+                    values +=  `marginTop:${item}px;`
+                } else if (key == 'lrMargin') {
+                    values +=  `marginLeft:${item}px;marginRight:${item}px;`
+                } else if (key == 'bgClor') {
+                    values +=  `backgroundColor: ${item};`
+                } else if(key == 'bgImage' && target.isBgImage.value == '2') {
+                    values +=  `backgroundImage: url(${item});`
+                }
             }
-        });
+        }
         return values
     }
     console.log('格式出错！')

@@ -17,6 +17,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.el-drawer__body{
+    height: 100%;
+}
+
+
 .ql-editor{
     min-height: 60px !important;
 }
@@ -48,7 +53,7 @@ export default {
     color: #222222;
     
     .list-title-text{
-      font-size: 22px;
+      font-size: 16px;
       line-height: 1.6;
     }
 
@@ -57,5 +62,20 @@ export default {
       line-height: 1.4;
       opacity: 0.9;
     }
+}
+
+::-webkit-scrollbar{ 
+  width: 6px;
+  height: 1px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  background: #535353;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  background: #EDEDED;
 }
 </style>

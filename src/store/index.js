@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import { swap } from "@/utils/utils";
 import { toast } from "@/utils/toast";
 
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -12,8 +13,10 @@ const store = new Vuex.Store({
             width: 750,
             height: 740,
             bgClor: '#ffffff',
+            bgImage:'',
             tbPadding: 20,
-            lrPadding: 20
+            lrPadding: 20,
+            isBgImage: '1'
         },
         componentData: [], // 画布组件数据
         curComponent: null,
@@ -27,21 +30,11 @@ const store = new Vuex.Store({
         template:[],  //模板
     },
     mutations: {
-        addTemplate(state){
-            const length = state.template.length*1 + 1
-            const item = {
-                name: `模板${length}`,
-                id: length,
-                src: 'http://web.xm12t.cn/lgx/vuedist/title.jpg',
-                canvasStyle: JSON.parse(JSON.stringify(state.canvasStyleData)),
-                canvasData: JSON.parse(JSON.stringify(state.componentData))
-            }
-            state.template.push(item)
-            localStorage.setItem('template', JSON.stringify(state.template))
-            
-        },
         setTemplate(state, template) {
             state.template = template
+        },
+        addTemplate(state, item) {
+            state.template = [item].concat(state.template)
         },
         setCanvasStyle(state, style) {
             state.canvasStyleData = style
@@ -114,7 +107,9 @@ const store = new Vuex.Store({
         },
 
     },
-    actions:{},
+    actions:{
+        
+    },
 })
 
 export default store

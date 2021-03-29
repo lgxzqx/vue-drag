@@ -1,13 +1,12 @@
 <template>
-    <div class="list-box" :style="getStyle">
-            <div class="list-name-box" >
+    <div class="list01-box" :style="getStyle">
+            <div class="list01-name-box" >
                 <div class="list-title-text" v-html="propValues.name.value"></div>
-                <div class="list-desc-text" v-html="propValues.describe.value"></div>
             </div>
 
-        <el-row  class="list-item-box">
-            <el-col :span="24/propStyle.column.value" class="list-tiem" v-for="(item, index) in propValues.list.value" :key="index" :style="getStyleType">
-                {{item.title}}
+        <el-row  class="list01-item-box">
+            <el-col :span="24/propStyle.column.value" class="list01-tiem" v-for="(item, index) in propValues.list.value" :key="index" :style="getStyleType">
+                <div v-html="item.title"></div>
             </el-col>
         </el-row>
     </div>
@@ -36,8 +35,8 @@
         methods: {},
     }
 </script>
-
+       
 <style lang="scss" scoped>
-    .list-item-box{ padding: 12px 0;}
-    .list-tiem{ line-height: 2; list-style-type: circle; color: #333; display: list-item;}
+    // .list-item-box{ padding: 12px 0;}
+    // .list-tiem{ line-height: 2; list-style-type: circle; color: #333; display: list-item;}
 </style>

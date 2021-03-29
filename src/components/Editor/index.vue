@@ -1,6 +1,6 @@
 <template>
     <div class="editor" id="editor"
-        :class="{ edit: isEdit }" :style="{ width: canvasStyleData.width + 'px', minHeight: canvasStyleData.height + 'px', backgroundColor: canvasStyleData.bgClor, paddingTop: canvasStyleData.tbPadding + 'px', paddingBottom: canvasStyleData.tbPadding + 'px', paddingLeft: canvasStyleData.lrPadding + 'px', paddingRight: canvasStyleData.lrPadding + 'px'  }"
+        :class="{ edit: isEdit }" :style="getBgStyle"
         @contextmenu="handleContextMenu"
     >
         <Shape v-for="(item, index) in componentData"
@@ -34,12 +34,39 @@
             },
         },
         components: { Shape, ContextMenu },
-        computed: mapState([
-            'componentData',
-            'curComponent',
-            'curComponentIndex',
-            'canvasStyleData',
-        ]),
+        computed:{ 
+            ...mapState([
+                'componentData',
+                'curComponent',
+                'curComponentIndex',
+                'canvasStyleData',
+            ]),
+            getBgStyle() {
+                const style = this.canvasStyleData
+                let value = ''
+                if (style.width) {
+                    value += 'width:'+ style.width + 'px;'
+                } 
+                if (style.height) {
+                    value += 'minHeight:'+ style.height + 'px;'
+                } 
+                if (style.bgClor && style.isBgImage == '1') {
+                    value += 'backgroundColor:'+ style.bgClor + ';'
+                } 
+                if (style.tbPadding) {
+                    value += 'paddingTop:'+ style.tbPadding + 'px;'
+                    value += 'paddingBottom:'+ style.tbPadding + 'px;'
+                } 
+                if (style.lrPadding) {
+                    value += 'paddingLeft:'+ style.lrPadding + 'px;'
+                    value += 'paddingRight:'+ style.lrPadding + 'px;'
+                } 
+                if (style.bgImage && style.isBgImage == '2') {
+                    value += 'backgroundImage:url('+ style.bgImage + ');'
+                }
+                return value
+            },
+        },
         methods: {
             handleContextMenu(e) {
                 e.stopPropagation()
@@ -67,12 +94,14 @@
     background: #fff;
     flex-shrink: 0;
     margin: 0 auto;
+    background-size: cover;
 }
 .edit {
     .component {
         outline: none;
         width: 100%;
         height: 100%;
+        overflow: hidden;
     }
 }
 </style>

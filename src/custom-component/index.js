@@ -8,6 +8,7 @@ const components = [
     'VBanner02',
     'VListtext01',
     'VListimage01',
+    'VListtextarea01',
     'VTitle01'
 ]
 

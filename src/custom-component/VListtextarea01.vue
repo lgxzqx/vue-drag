@@ -3,15 +3,15 @@
         <div class="list-name-box" v-if="propValues.name.value">
             <div class="list-title-text" v-html="propValues.name.value"></div>
         </div>
-        <el-row :gutter="20" class="listImage01-item-box">
+        <el-row :gutter="20" class="listTarea01-item-box">
             <el-col :span="24/propStyles.column.value" class="list-tiem" v-for="(item, index) in propValues.list.value" :key="index">
-                <div :style="'backgroundColor:'+ propStyles.titleBgColor.value" :class="'list-item-text'+ ' ' + propStyles.styles.value + '-box'"  v-if="item.title && propStyles.styles.value == 'topBlock'">
+                <div :style="'backgroundColor:'+ propStyles.titleBgColor.value" :class="'list-item-text'+ ' ' + propStyles.styles.value + '-box'"  v-if="item.title && propStyles.styles.value == 'left' || propStyles.styles.value == 'mixed' && index%2 == 1">
                     <div class="list-item-title" v-html="item.title"></div>
                 </div>
-                <div class="list-item-image">
-                    <img :src="item.src" :alt="item.title">
+                <div class="list-item-image" :style="'width:'+ propStyles.picwidth.value + 'px'">
+                    <img :src="item.src">
                 </div>
-                <div :style="'backgroundColor:'+ propStyles.titleBgColor.value" :class="'list-item-text'+ ' ' + propStyles.styles.value + '-box'"  v-if="item.title && propStyles.styles.value !== 'topBlock'">
+                <div :style="'backgroundColor:'+ propStyles.titleBgColor.value" :class="'list-item-text'+ ' ' + propStyles.styles.value + '-box'+' '+ 'mixed'+ index%2"  v-if="item.title && propStyles.styles.value == 'right' || propStyles.styles.value == 'mixed' && index%2 == 0">
                     <div class="list-item-title" v-html="item.title"></div>
                 </div>
             </el-col>
@@ -38,56 +38,38 @@
 </script>
 
 <style lang="scss" scoped>
-// .top-box{
-//     position: absolute;
-//     left: 10px;
-//     right: 10px;
-//     top: 0;
-//     background-color: rgba(0, 0, 0, 0.5);
-//     color: #fff;
-// }
-// .bottom-box{
-//     position: absolute;
-//     left: 10px;
-//     right: 10px;
-//     bottom: 0;
-//     background-color: rgba(0, 0, 0, 0.5);
-//     color: #fff;
-// }
-// .middle-box{
-//     position: absolute;
-//     left: 20px;
-//     right: 20px;
-//     top: 50%;
-//     transform: translate3d(-50%, -50%);
-//     background-color: rgba(0, 0, 0, 0.5);
-//     color: #fff;
-// }
-// .listImage01-item-box{
+
+// .listTarea01-item-box{
 //     margin-top: 20px;
 //     .list-tiem{
-//         margin-bottom: 20px;
+//         margin-bottom: 12px;
 //         position: relative;
+//         display: flex;
 //     }
 //     .list-item-image{ 
-//         width: 100%;
-
+//         width: 280px;
 //         img{
 //             width: 100%;
 //             display: block;
 //         }
 //     }
+    
 //     .list-item-text{
-//         padding: 6px;
+//         flex: 1;
+//         padding: 6px 12px;
 //         // background-color: #f4f4f4;
 //         .list-item-title{ 
-//             font-size: 16px;
-//         }
-//         .list-item-desc{
 //             font-size: 14px;
-//             color: #666666;
+//             line-height: 1.6;
 //         }
 //     }
+    
 // }
+    
+    
+
+
+
+
 
 </style>

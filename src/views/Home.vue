@@ -37,6 +37,7 @@ import DataList from '@/components/DataList'
 import AttrPublic from '@/components/AttrPublic'
 import { generateID } from '@/utils/generateID'
 import  { template } from '@/store/template'
+import api from '@/api'
 
 export default {
     components: { Toolbar, ComponentList, Editor, AttrList, AttrPublic, DataList },
@@ -60,20 +61,29 @@ export default {
         restore() {
             // 用保存的数据恢复画布
             if (localStorage.getItem('canvasData')) {
-                this.$store.commit('setComponentData', this.resetID(JSON.parse(localStorage.getItem('canvasData'))))
+                const canvasData = localStorage.getItem('canvasData')
+                this.$store.commit('setComponentData', this.resetID(JSON.parse(canvasData)))
             }
 
             if (localStorage.getItem('canvasStyle')) {
                 this.$store.commit('setCanvasStyle', JSON.parse(localStorage.getItem('canvasStyle')))
             }
 
-            // 预设模板
-            if (localStorage.getItem('template')) {
-                this.$store.commit('setTemplate', JSON.parse(localStorage.getItem('template')))
-            } else {
-                this.$store.commit('setTemplate', template)
-                localStorage.setItem('template', JSON.stringify(template))
+            if (!localStorage.getItem('template')) {
+                localStorage.setItem('template', template)
             }
+
+            api.getCannvas().then(res=> {
+                const data = res.data.data
+                // const template = localStorage.getItem('template')
+                // let list = template.concat(list)
+                // console.log('template', template)
+                this.$store.commit('setTemplate', data)
+            })
+            
+
+            // 预设模板
+            
         },
         resetID(data) {
             data.forEach(item => {
@@ -93,7 +103,7 @@ export default {
     background: #fff;
 
     main {
-        height: calc(100% - 64px);
+        height: calc(100% - 10px);
         position: relative;
 
         .left {
@@ -111,6 +121,7 @@ export default {
             width: 306px;
             right: 0;
             top: 0;
+            height: calc(100% - 64px);
         }
 
         .center {
@@ -119,7 +130,7 @@ export default {
             background: #f5f5f5;
             height: 100%;
             overflow: auto;
-            padding: 20px;
+            padding: 20px 0 80px;
 
             .content {
                 height: 100%;

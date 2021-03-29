@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-select v-model="values.value" placeholder="请选择">
+        <el-select class='select-box' v-model="values.value" placeholder="请选择">
             <el-option
                 v-for="o in options"
                 :key="o.value"
@@ -18,5 +18,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+.select-box{ width: 100%;}
 </style>

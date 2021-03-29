@@ -1,0 +1,167 @@
+@charset "UTF-8";
+img { 
+    max-width:100%;
+    max-height: 100%;
+    display: block;
+}
+/* banner01 */
+.banner-box{
+    width: 100%; 
+    position: relative; 
+}
+.top-box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+.middle-box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 99;
+}
+.bottom-box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+.bottomBlock-box{
+    margin: 0 !important;
+}
+.banner-title {
+    color: #fff;
+}
+.topBlock-box{
+    margin: 0 !important;
+}
+.banner-title {
+    color: #fff;
+}
+.banner-text{
+    color: #fff;
+    font-size: 16px;
+}
+.banner-title{
+    line-height: 1.4;
+    padding: 12px;
+}
+
+/* banner02 */
+.banner02-box{
+    width: 100%; 
+}
+
+.banner02-item0{
+    margin-right: 2%;
+}
+.banner02-item-box{
+    position: relative;
+    float: left;
+    margin-bottom: 2%;
+}
+.banner02-text{
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 6px;
+    font-size: 14px;
+}
+.banner02-title{
+    line-height: 1.4;
+}
+/* 文字列表01 */
+.list01-item-box{ padding: 12px 0;}
+.list01-tiem{ line-height: 2; list-style-type: circle; color: #333; display: list-item;}
+/* 图片列表01 */
+.listImage01-item-box .top-box{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+.listImage01-item-box .bottom-box{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+.listImage01-item-box .middle-box{
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    transform: translate3d(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+.listImage01-item-box{
+    margin-top: 20px;
+}
+.listImage01-item-box .list-tiem{
+    margin-bottom: 20px;
+    position: relative;
+}
+.listImage01-item-box .list-item-image{ 
+    width: 100%;
+}
+.listImage01-item-box .list-item-text{
+    padding: 6px;
+}
+.listImage01-item-box .list-item-title{ 
+    font-size: 16px;
+}
+.listImage01-item-box .list-item-desc{
+    font-size: 14px;
+    color: #666666;
+}
+
+/* 图文列表01 */
+.listTarea01-item-box{
+    margin-top: 20px;
+}
+.listTarea01-item-box .list-tiem{
+    margin-bottom: 12px;
+    position: relative;
+    display: flex;
+}
+.listTarea01-item-box .list-item-image{ 
+    width: 280px;
+}
+
+.listTarea01-item-box .list-item-text{
+    flex: 1;
+    padding: 6px 12px;
+}
+.listTarea01-item-box .list-item-title{ 
+    font-size: 14px;
+    line-height: 1.6;
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
