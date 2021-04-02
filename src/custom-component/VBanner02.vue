@@ -4,19 +4,19 @@
             <div :class="'item'+index" v-if="index == 0" >
                 <img :src="item.src">
                 <div class="banner02-text" v-if="item.title" :style="'backgroundColor:'+ propStyles.titleBgColor.value">
-                    <p class="banner02-title" v-html="item.title"></p>
+                    <div class="banner02-title" v-html="item.title"></div>
                 </div>
             </div>
             <div :class="'item'+index" v-else-if="index == 1">
                 <img :src="item.src">
                 <div class="banner02-text" v-if="item.title" :style="'backgroundColor:'+ propStyles.titleBgColor.value">
-                    <p class="banner02-title" v-html="item.title"></p>
+                    <div class="banner02-title" v-html="item.title"></div>
                 </div>
             </div>
             <div :class="'item'+index" v-else >
                 <img :src="item.src">
                 <div class="banner02-text" v-if="item.title" :style="'backgroundColor:'+ propStyles.titleBgColor.value">
-                    <p class="banner02-title" v-html="item.title"></p>
+                    <div class="banner02-title" v-html="item.title"></div>
                 </div>
             </div>
         </div>

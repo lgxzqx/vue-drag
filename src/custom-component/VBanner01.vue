@@ -1,11 +1,11 @@
 <template>
     <div class="banner-box" :style="getStyle">
         <div :style="getStylePad + 'backgroundColor:'+ propStyles.titleBgColor.value" :class="'banner-text' + ' ' + propStyles.styles.value + '-box'" v-if="propValues.title.value && propStyles.styles.value == 'topBlock'">
-            <p class="banner-title" v-html="propValues.title.value"></p>
+            <div class="banner-title" v-html="propValues.title.value"></div>
         </div>
         <img :src="propValues.src.value">
         <div :style="getStylePad + 'backgroundColor:'+ propStyles.titleBgColor.value" :class="'banner-text' + ' ' + propStyles.styles.value + '-box'" v-if="propValues.title.value && propStyles.styles.value !== 'topBlock'">
-            <p class="banner-title" v-html="propValues.title.value"></p>
+            <div class="banner-title" v-html="propValues.title.value"></div>
         </div>
     </div>
 </template>

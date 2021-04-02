@@ -5,6 +5,18 @@ img {
     display: block;
 }
 /* banner01 */
+.home h1{ font-size: 2em;}
+.home h2{ font-size: 1.5em;}
+.home h3{ font-size: 1.17em;}
+.home h4{ font-size: 1em;}
+.home h5{ font-size: 0.83em;}
+.home h6{ font-size: 0.67em;}
+.home .ql-size-small{ font-size: 0.75em}
+.home .ql-size-large{ font-size: 1.5em}
+.home  .ql-size-huge{ font-size: 2.5em}
+
+
+
 .banner-box{
     width: 100%; 
     position: relative; 
@@ -118,9 +130,6 @@ img {
 }
 .listImage01-item-box .list-item-text{
     padding: 6px;
-}
-.listImage01-item-box .list-item-title{ 
-    font-size: 16px;
 }
 .listImage01-item-box .list-item-desc{
     font-size: 14px;

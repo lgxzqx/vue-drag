@@ -188,16 +188,25 @@ export default {
             const id = localStorage.getItem('id')
             const name = this.saveForm.name
             const img = this.saveForm.src
+            if(!id) {
+                this.$message.error('找不到模板ID，先另存为模板。才能保存！')
+                return false
+            }
             const canvasStyle = JSON.stringify(this.canvasStyleData)
             const canvasData = JSON.stringify(this.componentData)
             api.saveCannva(id, name, canvasData, canvasStyle, img).then(res=>{
                 // id, name, canvasData, canvasStyle
-                console.log('object', res)
-                localStorage.setItem('name', name)
-                localStorage.setItem('img', img)
-                this.$message.success('保存成功')
-                this.saveFormVisible = false
-                this.getList()
+                if (res.data.code == 200) {
+                    console.log('object', res)
+                    localStorage.setItem('name', name)
+                    localStorage.setItem('img', img)
+                    this.$message.success('保存成功')
+                    this.saveFormVisible = false
+                    this.getList()
+                } else {
+                    this.$message.error(res.data.msg)
+                }
+                
             })
             
         },
@@ -224,18 +233,25 @@ export default {
             const canvasData = JSON.stringify(this.componentData)
             const canvasStyle = JSON.stringify(this.canvasStyleData)
             api.addCannvas(name,canvasData,canvasStyle, img).then(res=>{
-                this.$message.success('保存成功')
-                const item = {
-                    canvasData,
-                    canvasStyle,
-                    img,
-                    name,
-                    id: res.data.data
+                if (res.data.code == 200) {
+                    this.$message.success('保存成功')
+                    const item = {
+                        canvasData,
+                        canvasStyle,
+                        img,
+                        name,
+                        id: res.data.data
+                    }
+                    localStorage.setItem('id', res.data.data)
+                    localStorage.setItem('name', name)
+                    localStorage.setItem('img', img)
+                    this.$store.commit('addTemplate', item)
+                } else {
+                    console.log('msg', res)
+                    this.$message.error(`${res.data.msg}`)
                 }
-                localStorage.setItem('id', res.data.data)
-                localStorage.setItem('name', name)
-                localStorage.setItem('img', img)
-                this.$store.commit('addTemplate', item)
+                
+                
             })
             this.dialogFormVisible = false
         },
@@ -289,7 +305,7 @@ export default {
 }
 .toolbar {
     height: 64px;
-    line-height: 64px;
+    padding-top: 11px;
     background: #fff;
     border-bottom: 1px solid #ddd;
     overflow: hidden;

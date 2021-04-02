@@ -6,13 +6,13 @@ const commonStyle = {
         name: '上下padding',
         key: 'tbPadding',
         type: 'number',
-        value: 20
+        value: 10
     },
     lrPadding: {
         name: '左右padding',
         key: 'lrPadding',
         type: 'number',
-        value: 20
+        value: 10
     },
     tbMargin: {
         name: '上margin',

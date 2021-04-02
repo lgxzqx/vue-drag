@@ -10,12 +10,12 @@ const store = new Vuex.Store({
     state: {
         editMode: 'edit', // 编辑器模式 edit read
         canvasStyleData: { // 页面全局数据
-            width: 750,
+            width: 880,
             height: 740,
             bgClor: '#ffffff',
             bgImage:'',
-            tbPadding: 20,
-            lrPadding: 20,
+            tbPadding: 10,
+            lrPadding: 10,
             isBgImage: '1'
         },
         componentData: [], // 画布组件数据

@@ -121,6 +121,7 @@
                 const oEditor = window.opener.FCKeditorAPI.GetInstance("content")
                       oEditor.SetHTML(html)
                 const url = await this.saveImage('html2canvas', 'pic', true)
+                console.log('url', url)
                 window.opener.document.querySelector('.outside').value = url
             },
             getCssTtml(){
@@ -130,7 +131,6 @@
                     ${template}
                 </div>
                 `
-                console.log('导出html+css：', html)
                 return html
 
             },
@@ -188,18 +188,15 @@
                     document.body.removeChild(dom);
 
                     // let blob = that.dataURLtoBlob(dom.toDataURL('image/png'));
-                    var file = that.dataURLtoFile(dom.toDataURL('image/png'), 'imgName.png');
-
+                    var file = that.dataURLtoFile(dom.toDataURL('image/jpg'), 'imgName.jpg');
                     if(!isTrue){
                         a.setAttribute('href', URL.createObjectURL(file));
                         //这块是保存图片操作  可以设置保存的图片的信息
-                        a.setAttribute('download', imgText + '.png');
+                        a.setAttribute('download', imgText + '.jpg');
                         document.body.appendChild(a);
                         a.click();
+                        document.body.removeChild(a);
                     }
-
-                    URL.revokeObjectURL(file);
-                    document.body.removeChild(a);
 
                     const data = {
                         name: file.name,
@@ -207,7 +204,7 @@
                         file: file
                     }
                     return await api.uploadPic(data).then(res=> {
-                        return `https://${res.data.file}`
+                        return `${res.data.hbfile}`
                     })
                     
                 });

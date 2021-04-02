@@ -60,25 +60,26 @@ export default {
         },
         restore() {
             // 用保存的数据恢复画布
-            if (localStorage.getItem('canvasData')) {
-                const canvasData = localStorage.getItem('canvasData')
-                this.$store.commit('setComponentData', this.resetID(JSON.parse(canvasData)))
-            }
+            // if (localStorage.getItem('canvasData')) {
+            //     const canvasData = localStorage.getItem('canvasData')
+            //     this.$store.commit('setComponentData', this.resetID(JSON.parse(canvasData)))
+            // }
 
-            if (localStorage.getItem('canvasStyle')) {
-                this.$store.commit('setCanvasStyle', JSON.parse(localStorage.getItem('canvasStyle')))
-            }
+            // if (localStorage.getItem('canvasStyle')) {
+            //     this.$store.commit('setCanvasStyle', JSON.parse(localStorage.getItem('canvasStyle')))
+            // }
 
-            if (!localStorage.getItem('template')) {
-                localStorage.setItem('template', template)
-            }
-
+            // if (!localStorage.getItem('template')) {
+            //     localStorage.setItem('template', template)
+            // }
+            localStorage.clear()
             api.getCannvas().then(res=> {
                 const data = res.data.data
                 // const template = localStorage.getItem('template')
                 // let list = template.concat(list)
                 // console.log('template', template)
                 this.$store.commit('setTemplate', data)
+                 
             })
             
 

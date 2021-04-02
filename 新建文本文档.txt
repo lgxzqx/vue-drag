@@ -1,2 +1,3 @@
 trunk\source\member\canvas
+trunk\source\mobile\static\lgx_haibao.css
 trunk\source\template\dn160t000001\canvas
