@@ -207,6 +207,8 @@ export default {
                     this.$message.error(res.data.msg)
                 }
                 
+            }).catch(err=> {
+                this.$message.error('网络连接失败，请稍微再试！')
             })
             
         },
@@ -214,9 +216,12 @@ export default {
             api.getCannvas().then(res=> {
                 const data = res.data.data
                 this.$store.commit('setTemplate', data)
+            }).catch(err=> {
+                this.$message.error('网络连接失败，请稍微再试！')
             })
         },
         clearCanvas(){
+            localStorage.clear()
             this.$store.commit('setComponentData', [])
         },
         addTempFn() {
@@ -245,13 +250,18 @@ export default {
                     localStorage.setItem('id', res.data.data)
                     localStorage.setItem('name', name)
                     localStorage.setItem('img', img)
-                    this.$store.commit('addTemplate', item)
+                    api.getCannvas().then(res=> {
+                        const data = res.data.data
+                        this.$store.commit('setTemplate', data)
+                    })
                 } else {
                     console.log('msg', res)
                     this.$message.error(`${res.data.msg}`)
                 }
                 
                 
+            }).catch(err=> {
+                this.$message.error('网络连接失败，请稍微再试！')
             })
             this.dialogFormVisible = false
         },

@@ -123,6 +123,7 @@
                 const url = await this.saveImage('html2canvas', 'pic', true)
                 console.log('url', url)
                 window.opener.document.querySelector('.outside').value = url
+                this.$message.success('导出成功！')
             },
             getCssTtml(){
                 const template = this.$refs.test.innerHTML

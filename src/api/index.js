@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import qs from 'qs'
 
-axios.defaults.baseURL = '/api'; //填写域名
+axios.defaults.baseURL = ''; //填写域名
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export default {
