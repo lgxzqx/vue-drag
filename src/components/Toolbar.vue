@@ -164,7 +164,7 @@ export default {
                 file: file.raw
             }
             api.uploadPic(data).then(res=> {
-                this.form.src = `https://${res.data.file}`
+                this.form.src = `http://${res.data.file}`
             })
         },
         onUploadChang1:function(file) {
@@ -174,7 +174,7 @@ export default {
                 file: file.raw
             }
             api.uploadPic(data).then(res=> {
-                this.saveForm.src = `https://${res.data.file}`
+                this.saveForm.src = `http://${res.data.file}`
             })
         },
         preview() {
@@ -215,6 +215,7 @@ export default {
         getList(){
             api.getCannvas().then(res=> {
                 const data = res.data.data
+                this.$store.commit('setUri', res.data.url)
                 this.$store.commit('setTemplate', data)
             }).catch(err=> {
                 this.$message.error('网络连接失败，请稍微再试！')
@@ -252,6 +253,7 @@ export default {
                     localStorage.setItem('img', img)
                     api.getCannvas().then(res=> {
                         const data = res.data.data
+                        this.$store.commit('setUri', res.data.url)
                         this.$store.commit('setTemplate', data)
                     })
                 } else {

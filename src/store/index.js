@@ -28,8 +28,12 @@ const store = new Vuex.Store({
         menuShow: false,
         copyData: null, // 复制粘贴剪切
         template:[],  //模板
+        APP_URI:''
     },
     mutations: {
+        setUri(state, url) {
+            state.APP_URI = url
+        },
         setTemplate(state, template) {
             state.template = template
         },

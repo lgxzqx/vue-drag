@@ -78,6 +78,7 @@ export default {
                 // const template = localStorage.getItem('template')
                 // let list = template.concat(list)
                 // console.log('template', template)
+                this.$store.commit('setUri', res.data.url)
                 this.$store.commit('setTemplate', data)
                  
             })

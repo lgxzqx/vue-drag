@@ -113,7 +113,7 @@ export default {
                 file: file.raw
             }
             api.uploadPic(data).then(res=> {
-                const src = `https://${res.data.file}`
+                const src = `http://${res.data.file}`
                 if (inde != '-1') {
                     this.curComponent.propValue[index].value[inde].src = src
                 } else {

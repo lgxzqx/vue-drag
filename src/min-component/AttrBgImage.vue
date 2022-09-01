@@ -54,7 +54,7 @@
                 file: file.raw
             }
             api.uploadPic(data).then(res=> {
-                const src = `https://${res.data.file}`
+                const src = `http://${res.data.file}`
                 this.canvasStyleDatas.bgImage.value = src
             })
         }

@@ -4,7 +4,7 @@
         <el-button @click="saveHtml"  class="close getCssHTML">导出HTML</el-button>
         <el-button @click="saveImage('html2canvas', 'pic')"  class="close close1">下载图片</el-button>
         <!-- <el-button @click="export2Excel"  class="close getHTML">下载HTML</el-button> -->
-        <el-button @click="share"  class="close getHTML">分享模板</el-button>
+        <!-- <el-button @click="share"  class="close getHTML">分享模板</el-button> -->
         <div class="canvas-container" ref="test">
             <div class="canvas" id="html2canvas" ref="html2canvas" :style="getBgStyle">
                 <component v-for="(item, index) in componentData"
@@ -61,6 +61,7 @@
             ...mapState([
                 'componentData',  
                 'canvasStyleData',
+                'APP_URI'
             ]),
             getBgStyle() {
                 const style = this.canvasStyleData
@@ -118,11 +119,11 @@
             },
             async saveHtml(){
                 const html = this.getCssTtml() 
-                const oEditor = window.opener.FCKeditorAPI.GetInstance("content")
-                      oEditor.SetHTML(html)
+                // const oEditor = window.opener.FCKeditorAPI.GetInstance("content")
+                //       oEditor.SetHTML(html)
                 const url = await this.saveImage('html2canvas', 'pic', true)
                 console.log('url', url)
-                window.opener.document.querySelector('.outside').value = url
+                window.opener.document.getElementById('outside').value = url
                 this.$message.success('导出成功！')
             },
             getCssTtml(){
@@ -177,7 +178,7 @@
                 return await html2canvas(canvasID, {
                     scale: 1,
                     // allowTaint: true,
-                    proxy:'https://dn160.cdn.bcebos.com',
+                    proxy: this.APP_URI,
                     useCORS: true,
                     height: document.getElementById('html2canvas').scrollHeight,
                     windowHeight: document.getElementById('html2canvas').scrollHeight
